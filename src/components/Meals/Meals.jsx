@@ -1,7 +1,8 @@
 import MealItem from "./MealItem";
 import Error from "../Error/Error";
-import { fetchMeals } from "../../utils/fetchFunctions";
+import { fetchMeals } from "../../utils/http";
 import { useFetch } from "../../hooks/useFetch";
+import Loading from "../Loading/Loading";
 
 export default function Meals() {
 
@@ -13,7 +14,7 @@ export default function Meals() {
 
   return (
     <>
-        {isFetching && <p>Fetching meals...</p>}
+        {isFetching && <Loading loadingText="meals" />}
         {error && <Error title="An error occured!" message={error.message}/>}
         {meals && <ul id="meals">
             {meals.map(meal => (
